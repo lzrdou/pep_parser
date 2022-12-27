@@ -9,7 +9,7 @@ from pathlib import Path
 
 # useful for handling different item types with a single interface
 
-BASE_DIR = Path(__file__).parent.parent
+BASE_DIR = Path(__file__).parent
 results_dir = BASE_DIR / "results"
 results_dir.mkdir(exist_ok=True)
 now = dt.datetime.now()

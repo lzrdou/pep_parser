@@ -89,20 +89,16 @@ ROBOTSTXT_OBEY = True
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-BASE_DIR = Path(__file__).parent.parent
-results_dir = BASE_DIR / "results"
-results_dir.mkdir(exist_ok=True)
-now = dt.datetime.now()
-now_formatted = now.strftime("%Y-%m-%dT%H-%M-%S")
-file_name = f"pep_{now_formatted}.csv"
-file_path = results_dir / file_name
-with open(file_path, "w", encoding="utf-8") as f:
-    writer = csv.writer(f, dialect="unix")
-    writer.writerows(["Номер", "Название", "Статус"])
+# BASE_DIR = Path(__file__).parent.parent
+# results_dir = BASE_DIR / "results"
+# results_dir.mkdir(exist_ok=True)
+# now = dt.datetime.now()
+# time = now.strftime("%Y-%m-%dT%H-%M-%S")
 
 FEEDS = {
-    file_path: {
+    'results/pep_%(time)s.csv': {
         'format': 'csv',
+        'fields': ['number', 'name', 'status'],
         'overwrite': True
     }
 }
